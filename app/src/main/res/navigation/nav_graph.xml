@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tasksListsFragment">
+
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.groliks.tasksmanager.view.authentication.AuthenticationFragment"
+        android:label="AuthenticationFragment" />
+    <fragment
+        android:id="@+id/tasksListsFragment"
+        android:name="com.groliks.tasksmanager.view.taskslists.TasksListsFragment"
+        android:label="TasksListsFragment" >
+        <action
+            android:id="@+id/action_tasksListsFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
+        <action
+            android:id="@+id/action_tasksListsFragment_to_enterNameDialog"
+            app:destination="@id/enterNameDialog" />
+        <action
+            android:id="@+id/action_tasksListsFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/enterNameDialog"
+        android:name="com.groliks.tasksmanager.view.util.EnterNameDialog"
+        android:label="EnterNameDialog" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </dialog>
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.groliks.tasksmanager.view.tasklist.TaskListFragment"
+        android:label="TaskListFragment" >
+        <action
+            android:id="@+id/action_taskListFragment_to_enterNameDialog"
+            app:destination="@id/enterNameDialog" />
+        <argument
+            android:name="list_id"
+            app:argType="integer" />
+    </fragment>
+</navigation>
